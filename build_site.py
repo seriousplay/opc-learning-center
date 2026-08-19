@@ -347,9 +347,10 @@ def shell(title, active, hero, body, extra_css=""):
       <div>
         <h4>找到我们</h4>
         <a href="courses.html">OPC 课程三档</a>
-        <a href="#">公众号「OPC成长之路」</a>
-        <a href="#">星球「OPC超级个体加速器」</a>
-        <a href="#">公众号「进化型组织联盟」</a>
+        <a href="{ZSXQ_URL}" target="_blank" rel="noopener">星球「OPC超级个体加速器」</a>
+        <a href="{IMA_KB_URL}" target="_blank" rel="noopener">ima知识库「OPC超级个体加速器」</a>
+        <span style="display:block;color:#7d8a81;margin-bottom:6px;">公众号「OPC成长之路」（每周三/日更新）</span>
+        <span style="display:block;color:#7d8a81;">公众号「进化型组织联盟」</span>
       </div>
     </div>
     <div class="footer-bottom">
@@ -401,6 +402,9 @@ def assess_html():
     <div class="stat"><div class="v">1份</div><div class="k">个人诊断报告</div></div>
   </div>
 </div>"""
+
+ZSXQ_URL = "https://wx.zsxq.com/group/51114224124124"
+IMA_KB_URL = "https://ima.qq.com/wiki/?shareId=a9c0e648243d798ad16ae1ac835ee0aa9ef40127e9e098336bb33b0cfa2aff3c"
 
 # ============================================================
 # 现场跟练手册（playbook.html）— 素材全部源自 超级个体赋能营_一天流程_v6.0.md
@@ -861,8 +865,11 @@ def page_courses():
   <div class="container">
     <div class="cta">
       <h3>加入同行者社群</h3>
-      <p>星球「OPC超级个体加速器」：案例工厂、工具评测、每周选题、同行者互相验收回路。<br>公众号「OPC成长之路」：每周三、周日 20:00 更新。</p>
-      <a class="btn" href="index.html">扫码加入 · 认知到行动的最小闭环</a>
+      <p>星球「OPC超级个体加速器」：案例工厂、工具评测、每周选题、同行者互相验收回路。<br>ima知识库「OPC超级个体加速器」：完整案例库、方法论与学习资料沉淀。<br>公众号「OPC成长之路」：每周三、周日 20:00 更新。</p>
+      <div class="hero-btns" style="margin-top:18px;">
+        <a class="btn" href="{ZSXQ_URL}" target="_blank" rel="noopener">🚀 加入知识星球</a>
+        <a class="btn btn-line" href="{IMA_KB_URL}" target="_blank" rel="noopener">📚 进入 ima 知识库</a>
+      </div>
     </div>
   </div>
 </section>"""
