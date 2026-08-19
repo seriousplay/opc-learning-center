@@ -63,11 +63,19 @@ env -u PYTHONPATH python3 build_site.py
 
 ## 部署
 
-静态站点，无任何依赖，可部署到任意静态托管：
+**线上地址（GitHub Pages）：** https://seriousplay.github.io/opc-learning-center/
+**仓库：** github.com/seriousplay/opc-learning-center（公开）
 
-- **Netlify**：`npx netlify deploy --prod --dir=.`
-- **GitHub Pages**：推到仓库后开启 Pages
-- **本地/内网**：直接打开 index.html 或用 `python3 -m http.server` 起服务
+```bash
+# 更新推送
+cd "/Users/heyiqing/Documents/OPC研究工厂/OPC学习资源中心"
+git add -A && git commit -m "更新"
+git -c http.proxy= -c https.proxy= push   # ⚠️ 本机git全局代理指向127.0.0.1:7890但代理常未运行，需绕过
+```
+
+备选：Netlify `npx netlify deploy --prod --dir=.`（需先登录）
+
+> ⚠️ **代理坑**：`git config --global http.proxy` = `http://127.0.0.1:7890`（Clash 类代理），代理软件未运行时 push 会报 `Failed to connect to 127.0.0.1 port 7890`。用 `git -c http.proxy= -c https.proxy= push` 临时绕过，无需改全局配置。
 
 ## 演进路线
 
