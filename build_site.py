@@ -222,6 +222,7 @@ PACKS = [
 ]
 
 PRACTICES = [
+    dict(name="真实案例 · 别人怎么跑通的", body="multiline", content="""CASE_PLACEHOLDER"""),
     dict(name="2026 知识工作者 AI 应用 ROI 排行榜", body="multi-source",
          content="""
 <div class="rank-list">
@@ -516,7 +517,7 @@ def page_playbook():
 
     hero = hero_block("OPC 行动手册", "从知道，到做到：<br><em>十步打造你的 AI 工作系统</em>",
                       "面向所有 OPC 的行动指南：从准备、诊断、认知，到构建技能、接入知识库、整合项目——每一步都有操作动作、提示词模板、验收标准与拓展路径。跟着走，逐步提升你的 AI 驾驭力。",
-                      [("", "从第 00 步开始", "#mod-00"), ("line", "先看知识卡片", "#concepts")])
+                      [("", "#mod-00", "从第 00 步开始"), ("line", "#concepts", "先看知识卡片")])
 
     body = f"""
 <section id="concepts">
@@ -588,7 +589,7 @@ def page_index():
 
     hero = hero_block("碳硅组织研习社 · OPC成长之路", "AI 知识工作者<br><em>一站式学习资源中心</em>",
                       "一个人运行一个硅基团队。先测评你的 AI 驾驭力，再从认知觉醒到行动变现——渐进式五层路径，带你完成「认知到行动的最小闭环」。",
-                      [("", "开始 AI 驾驭力测评", ASSESS_URL), ("line", "浏览学习路径", "#levels")])
+                      [("", ASSESS_URL, "开始 AI 驾驭力测评"), ("line", "#levels", "浏览学习路径")])
 
     body = f"""
 <section id="assess-sec">
@@ -673,7 +674,7 @@ def page_methods():
 
     hero = hero_block("LEARNING PATH · L1", "高效工作法：<br><em>八大知识工作者工作流</em>",
                       "2026 年知识工作者 AI 应用已形成清晰范式。按「研究 → 写作 → 知识 → 会议 → 文档 → 数据 → 自动化 → Agent」八条主线掌握，每条都是已验证的实战方法。",
-                      [("", "选工具 →", "tools.html"), ("line", "看实践案例", "practices.html")])
+                      [("", "tools.html", "选工具 →"), ("line", "practices.html", "看实践案例")])
 
     body = f"""
 <section>
@@ -713,7 +714,7 @@ def page_tools():
 
     hero = hero_block("LEARNING PATH · L2", "AI 工具库：<br><em>按场景选工具，而不是被工具绑架</em>",
                       "9 大类 50+ 工具，国内外双维度覆盖。每个工具标注定位、核心优势、适用场景与定价——全部经多源交叉验证，标注更新日期。",
-                      [("", "先学方法", "methods.html"), ("line", "看最佳实践", "practices.html")])
+                      [("", "methods.html", "先学方法"), ("line", "practices.html", "看最佳实践")])
 
     body = f"""
 <section>
@@ -738,14 +739,66 @@ def page_tools():
 </section>"""
     return shell("AI工具库", "tools.html", hero, body)
 
+CASES = [
+    dict(name="孙宏量 / 无派科技", tags=["OPC 原型","一人+AI集群","国内"],
+         one="一个人 + AI 集群，在 15 平米办公室同时运转软件、硬件、电商三条业务线。",
+         how=["自研 SunCodexClaw AI 集群：AI 承担需求拆解→写代码→补测试→运营内容→部署发布的完整链路",
+              "人只负责方向、架构与验收；关键发布与最终验收必须人工确认",
+              "三条业务线共用一套 AI 集群，验证「少量人 + AI 员工」是可复制的组织形态"],
+         data="2020 年成立、注册资本 23.33 万、创始人 100% 持股；「土豆片」电子纸卡片上线约 2 个月销售额超 40 万元、订单超 1000 单；需求交付从按周推进缩短到当天",
+         take="把 AI 从「工具」升级为「执行主体」——这是 OPC 从个人效率工具走向可运转公司的关键跃迁。",
+         src="央视（2026-08 一人公司专题）· 新浪财经（2026-04-06）· 百度百科 · 中华网"),
+    dict(name="Justin Welsh / JustinWelsh.me", tags=["一人知识帝国","内容变现","海外"],
+         one="一个人、零付费投流，把免费内容做成累计营收突破 1000 万美元的生意。",
+         how=["纯内容获客：SEO + 内容自裂变，免费内容就是最强的销售代表",
+              "数字课程产品化：《LinkedIn OS》《Creator MBA》（约 $150 买断）",
+              "极简团队：1 人 + 1 名非全职跨国 VA"],
+         data="约 $640 万 ARR、生涯累计营收超 $1000 万、利润率 89%+；2019 年 38 岁起步",
+         take="OPC 用 AI 放大内容产能——一个人覆盖获客、信任、交付全链路，内容即产品。",
+         src="IMA 案例库（原始信源 getlatka.com、justinwelsh.me/my-10m-journey）"),
+    dict(name="DesignJoy / Brett Williams", tags=["订阅制","产品化服务","海外"],
+         one="把最传统的按小时卖设计，改造成一台利润率接近 99% 的订阅制机器。",
+         how=["产品化服务（Productized Service）：设计即订阅，替代按小时计价",
+              "阶梯定价：Standard 包 $4,995/月 + Premium 企业包（双任务线并发）",
+              "不融资、不雇人、不写代码——单人运营"],
+         data="2017 年上线当天即获客；2020 年病毒式曝光后突破 $150 万，后期做到约 $310 万年收入",
+         take="把不可标准化的服务产品化——AI 让单人产能翻倍，订阅制让收入可预期。",
+         src="IMA「OPC超级个体加速器」KB 实战案例库 · 星球案例解剖 2026-08-12"),
+    dict(name="ChatPDF / Mathis Lichtenberger", tags=["独立开发者","AI产品","海外"],
+         one="从独立开发者到百万用户的「精纯路线」：聚焦单一 AI 场景，小团队做到头。",
+         how=["极致聚焦：只做 AI 文档对话这一个场景",
+              "团队克制：1 人起步，目前控制在 4 人以内",
+              "不靠融资，靠产品和增长引擎跑通"],
+         data="2023 年 3 月成立；约 $44 万 ARR（估算）；百万级用户",
+         take="AI 时代独立开发者的样本：精准场景 + 小团队 + 产品驱动，OPC 的「最小可行公司」路径。",
+         src="Latka / Sigma School / NorthData / Admiral Media 等 9+ 独立来源"),
+]
+
+def cases_html():
+    cards = ""
+    for c in CASES:
+        how = "".join(f"<li>{h}</li>" for h in c["how"])
+        tags = "".join(f'<span class="tag">{t}</span>' for t in c["tags"])
+        cards += f"""<div class="case-card">
+  <div class="case-top"><h4>{c['name']}</h4><div class="case-tags">{tags}</div></div>
+  <p class="case-one">{c['one']}</p>
+  <ul class="case-how">{how}</ul>
+  <div class="case-data">📊 {c['data']}</div>
+  <div class="case-take">💡 {c['take']}</div>
+  <div class="case-src">🔗 信源：{c['src']}</div>
+</div>"""
+    return f"""<div class="case-grid">{cards}</div>
+<div class="note-box">📚 <b>完整案例库</b>：本站收录案例来自《碳硅组织》HBR 规格案例库与星球「OPC超级个体加速器」案例解剖系列，全部多源交叉验证。访问 <a href="resources/cases/案例总索引.md">📑 案例总索引</a> 浏览全部案例。</div>"""
+
 def page_practices():
     ps = ""
     for p in PRACTICES:
-        ps += f"""<div class="practice"><h3>{p['name']}</h3>{p['content']}</div>"""
+        content = p["content"].replace("CASE_PLACEHOLDER", cases_html())
+        ps += f"""<div class="practice"><h3>{p['name']}</h3>{content}</div>"""
 
     hero = hero_block("LEARNING PATH · L3", "最佳实践：<br><em>从「会用」到「用好」</em>",
                       "工具遍地都是，稀缺的是判断力。这里沉淀的是经过验证的高 ROI 场景、人机协作方法论，以及用真实教训换来的铁律。",
-                      [("", "回到工作法", "methods.html"), ("line", "去行动", "courses.html")])
+                      [("", "methods.html", "回到工作法"), ("line", "courses.html", "去行动")])
 
     body = f"""
 <section>
@@ -781,7 +834,7 @@ def page_courses():
 
     hero = hero_block("LEARNING PATH · L4", "课程与行动：<br><em>把能力变成收入</em>",
                       "认知到行动的最小闭环。三档课程对应三条进化线：看清自己 → 跑通回路 → 项目启航。每一档都是上一档的放大器，而不是重复。",
-                      [("", "加入星球", "courses.html"), ("line", "回到起点 L0", "index.html#levels")])
+                      [("", "courses.html", "加入星球"), ("line", "index.html#levels", "回到起点 L0")])
 
     body = f"""
 <section>

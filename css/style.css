@@ -291,6 +291,23 @@ h2.sec-title { font-size:1.9rem; font-weight:600; line-height:1.35; margin-botto
 .prompt-box { background:#0d2818; color:#d0d5d2; border-radius:8px; padding:18px 20px; font-size:0.83rem; font-family:var(--sans); line-height:1.8; margin:10px 0; white-space:pre-wrap; }
 .prompt-box .plabel { color:var(--green-bright); font-size:0.7rem; letter-spacing:0.18em; font-weight:600; display:block; margin-bottom:6px; }
 
+/* ---------- 真实案例 ---------- */
+.case-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(320px,1fr)); gap:18px; }
+.case-card {
+  background:var(--white); border:1px solid var(--border); border-radius:10px;
+  padding:24px 22px; box-shadow:var(--shadow); display:flex; flex-direction:column; gap:10px;
+  border-top:3px solid var(--l3);
+}
+.case-top { display:flex; justify-content:space-between; align-items:flex-start; gap:10px; flex-wrap:wrap; }
+.case-top h4 { font-size:1.05rem; }
+.case-tags { display:flex; gap:6px; flex-wrap:wrap; }
+.case-one { font-size:0.9rem; font-weight:600; color:var(--dark); line-height:1.6; }
+.case-how { margin:0 0 0 18px; font-size:0.84rem; color:var(--gray); }
+.case-how li { margin-bottom:5px; }
+.case-data { font-size:0.82rem; color:var(--ink); background:var(--warm); border-radius:6px; padding:10px 12px; line-height:1.6; }
+.case-take { font-size:0.84rem; color:var(--green); font-weight:600; line-height:1.6; }
+.case-src { font-size:0.72rem; color:var(--light-gray); border-top:1px dashed var(--border); padding-top:8px; }
+
 /* ---------- 课程页 ---------- */
 .tier-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(290px,1fr)); gap:20px; }
 .tier {
