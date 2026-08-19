@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>首页 · OPC成长之路 · AI知识工作者学习资源中心</title>
+<meta name="description" content="AI 知识工作者一站式学习资源中心：高效工作法、AI 工具库、最佳实践、OPC 课程。一个人运行一个硅基团队。">
+<link rel="stylesheet" href="css/style.css">
+
+</head>
+<body>
+<nav class="nav">
+  <div class="container nav-inner">
+    <a class="brand" href="index.html"><span class="logo">OPC</span><span>OPC成长之路学习中心</span></a>
+    <div class="search-wrap"><input id="site-search" class="site-search" type="search" placeholder="搜索方法/工具/实践..." aria-label="站内搜索"></div>
+    <button class="nav-menu-toggle" aria-label="菜单" onclick="document.querySelector('.nav-links').classList.toggle('mobile-open')">☰ 菜单</button>
+    <div class="nav-links"><a href="index.html" class="active">首页</a><a href="playbook.html" class="">现场跟练</a><a href="methods.html" class="">高效工作法</a><a href="tools.html" class="">AI工具库</a><a href="practices.html" class="">最佳实践</a><a href="courses.html" class="">课程与行动</a><a class="nav-cta" href="courses.html">立即报名</a></div>
+  </div>
+</nav>
+<header class="hero">
+  <div class="container">
+    <span class="eyebrow">碳硅组织研习社 · OPC成长之路</span>
+    <h1>AI 知识工作者<br><em>一站式学习资源中心</em></h1>
+    <p class="sub">一个人运行一个硅基团队。从认知觉醒到行动变现，渐进式五层路径，带你完成「认知到行动的最小闭环」。</p>
+    <div class="hero-btns"><a class="btn " href="从 L0 开始我的路径">#levels</a><a class="btn line" href="浏览工具库">tools.html</a></div>
+  </div>
+</header>
+
+<section id="quiz-sec">
+  <div class="container">
+    
+<div class="quiz" id="quiz">
+  <div class="sec-head">
+    <span class="sec-label">SELF-DIAGNOSIS · 60秒</span>
+    <h2 class="sec-title">工具链自测：你现在在哪一层？</h2>
+    <p class="sec-desc">回答 4 个问题，系统基于「工具链五层」模型定位你的基线，并推荐你的下一站——与 OPC 工作坊课前诊断同一套方法论。</p>
+  </div>
+  <div class="quiz-q"><h4>1. 你现在怎么用 AI？</h4><div class="quiz-opts"><label class="quiz-opt"><input type="radio" name="q1" value="0"><span>偶尔问两句，当高级搜索引擎用</span></label><label class="quiz-opt"><input type="radio" name="q1" value="1"><span>让 AI 帮我写文档/做具体任务</span></label><label class="quiz-opt"><input type="radio" name="q1" value="2"><span>有自己的提示词模板反复用</span></label><label class="quiz-opt"><input type="radio" name="q1" value="3"><span>建了个人知识库喂给 AI</span></label><label class="quiz-opt"><input type="radio" name="q1" value="4"><span>多个 AI/Agent 协作跑流程</span></label></div></div><div class="quiz-q"><h4>2. 你每周重复最多的任务是什么？</h4><div class="quiz-opts"><label class="quiz-opt"><input type="radio" name="q2" value="0"><span>搜索资料、看文章，没沉淀</span></label><label class="quiz-opt"><input type="radio" name="q2" value="1"><span>写文档/报告/周报</span></label><label class="quiz-opt"><input type="radio" name="q2" value="2"><span>固定格式的内容生产</span></label><label class="quiz-opt"><input type="radio" name="q2" value="3"><span>整理资料/做研究</span></label><label class="quiz-opt"><input type="radio" name="q2" value="4"><span>跨系统数据搬运/流程运转</span></label></div></div><div class="quiz-q"><h4>3. 你的 AI 产出稳定吗？</h4><div class="quiz-opts"><label class="quiz-opt"><input type="radio" name="q3" value="0"><span>没概念，每次随缘</span></label><label class="quiz-opt"><input type="radio" name="q3" value="1"><span>能用，但每次要重新教</span></label><label class="quiz-opt"><input type="radio" name="q3" value="2"><span>有模板，输出比较稳定</span></label><label class="quiz-opt"><input type="radio" name="q3" value="3"><span>会用我的资料回答，较准</span></label><label class="quiz-opt"><input type="radio" name="q3" value="4"><span>有验收标准和回退机制</span></label></div></div><div class="quiz-q"><h4>4. 你对 AI 的期望是？</h4><div class="quiz-opts"><label class="quiz-opt"><input type="radio" name="q4" value="0"><span>先搞清楚它到底能干嘛</span></label><label class="quiz-opt"><input type="radio" name="q4" value="1"><span>帮我把活干完</span></label><label class="quiz-opt"><input type="radio" name="q4" value="2"><span>把重复活自动化</span></label><label class="quiz-opt"><input type="radio" name="q4" value="3"><span>成为我的第二大脑</span></label><label class="quiz-opt"><input type="radio" name="q4" value="4"><span>替我运营一个硅基团队</span></label></div></div>
+  <div class="quiz-actions">
+    <button class="btn" onclick="runQuiz()">🔍 测出我的层级</button>
+  </div>
+  <div id="quiz-result" class="quiz-result"></div>
+</div>
+<script>
+var QUIZ_NAMES = ["认知觉醒", "方法掌握", "工具驾驭", "实践深化", "行动变现"];
+var QUIZ_HINTS = ["从 L0 开始：先建立认知地图，搞清三大能力与工具链五层。", "从 L1 开始：选与你工作重合度最高的 1-2 条工作法跑通。", "从 L2 开始：按场景配齐工具链，抄「选型组合」作业。", "从 L3 开始：用高 ROI 场景 + 回路方法论，把会用变成用好。", "从 L4 开始：直接进入行动变现，同时用案例反哺认知。"];
+var QUIZ_LINKS = ["index.html#levels", "methods.html", "tools.html", "practices.html", "courses.html"];
+function runQuiz(){
+  var qs = document.querySelectorAll('.quiz-q');
+  var scores = [0,0,0,0,0];
+  for (var i = 0; i < qs.length; i++) {
+    var c = qs[i].querySelector('input:checked');
+    if (!c) { alert('请完成第 ' + (i+1) + ' 题'); return; }
+    scores[parseInt(c.value,10)]++;
+  }
+  var best = 0;
+  for (var j = 1; j < 5; j++) { if (scores[j] > scores[best]) best = j; }
+  var el = document.getElementById('quiz-result');
+  el.innerHTML = '<div class="qr-box"><div class="qr-lv">L' + best + ' · ' + QUIZ_NAMES[best] + '</div><p>' + QUIZ_HINTS[best] + '</p><a class="btn btn-sm" href="' + QUIZ_LINKS[best] + '">前往我的下一站 →</a></div>';
+  el.scrollIntoView({behavior:'smooth', block:'center'});
+}
+</script>
+  </div>
+</section>
+
+<section id="levels">
+  <div class="container">
+    <div class="sec-head">
+      <span class="sec-label">PROGRESSIVE PATH</span>
+      <h2 class="sec-title">渐进式学习路径</h2>
+      <p class="sec-desc">不要求你学会所有 AI 工具——只需要从今天所在的那一层，往上走一层。站点按五层组织，任何入口进入都能找到自己的下一站。</p>
+    </div>
+    <div class="levels"><div class="level">
+  <div class="level-bar" style="background:#b85a30"></div>
+  <div class="level-body">
+    <div class="level-no" style="color:#b85a30">L0</div>
+    <div class="level-info">
+      <h3>认知觉醒</h3>
+      <p>为什么 AI 时代人人都是 OPC？三大能力、工具链五层、碳硅共生——建立完整认知地图，找到你的起点。</p>
+      <div class="level-tags"><span class="tag">概念卡</span><span class="tag">三大能力</span><span class="tag">工具链五层</span><span class="tag">碳硅共生</span></div>
+    </div>
+    <div class="level-go"><a href="methods.html">找到你的基线 →</a></div>
+  </div>
+</div><div class="level">
+  <div class="level-bar" style="background:#2563eb"></div>
+  <div class="level-body">
+    <div class="level-no" style="color:#2563eb">L1</div>
+    <div class="level-info">
+      <h3>方法掌握</h3>
+      <p>八大知识工作者高效工作法：深度研究、AI写作、第二大脑、会议效率、文档处理、数据分析、自动化、Agent构建。</p>
+      <div class="level-tags"><span class="tag">8大工作流</span><span class="tag">最佳实践</span><span class="tag">人机分工</span></div>
+    </div>
+    <div class="level-go"><a href="methods.html">掌握核心方法 →</a></div>
+  </div>
+</div><div class="level">
+  <div class="level-bar" style="background:#00aa55"></div>
+  <div class="level-body">
+    <div class="level-no" style="color:#00aa55">L2</div>
+    <div class="level-info">
+      <h3>工具驾驭</h3>
+      <p>按场景分类的 AI 工具库：国内外双维度、定位、优势、定价一表尽览，附新人入门/出海/自动化选型组合。</p>
+      <div class="level-tags"><span class="tag">工具地图</span><span class="tag">国内外双维度</span><span class="tag">选型组合</span></div>
+    </div>
+    <div class="level-go"><a href="tools.html">选对你的工具 →</a></div>
+  </div>
+</div><div class="level">
+  <div class="level-bar" style="background:#7c3aed"></div>
+  <div class="level-body">
+    <div class="level-no" style="color:#7c3aed">L3</div>
+    <div class="level-info">
+      <h3>实践深化</h3>
+      <p>2026 高 ROI 场景、人机协作回路、真实性铁律、保姆级教程与可复制提示词模板——把方法变成肌肉记忆。</p>
+      <div class="level-tags"><span class="tag">高ROI场景</span><span class="tag">回路六要素</span><span class="tag">保姆级教程</span><span class="tag">提示词模板</span></div>
+    </div>
+    <div class="level-go"><a href="practices.html">从会用到用好 →</a></div>
+  </div>
+</div><div class="level">
+  <div class="level-bar" style="background:#0d2818"></div>
+  <div class="level-body">
+    <div class="level-no" style="color:#0d2818">L4</div>
+    <div class="level-info">
+      <h3>行动变现</h3>
+      <p>从一天觉醒到一月启航：OPC 课程三档、30 天路线图、同行者社群——把能力变成产品，把产品变成收入。</p>
+      <div class="level-tags"><span class="tag">课程三档</span><span class="tag">30天路线图</span><span class="tag">社群</span></div>
+    </div>
+    <div class="level-go"><a href="courses.html">把能力变成收入 →</a></div>
+  </div>
+</div></div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="sec-head">
+      <span class="sec-label">THREE CAPABILITIES</span>
+      <h2 class="sec-title">超级个体三大能力</h2>
+      <p class="sec-desc">AI 时代的知识工作者，核心竞争力归结为三件事：驾驭 AI、翻译碳硅、创造意义。</p>
+    </div>
+    <div class="fw-strip"><div class="fw"><span class="fw-num">🚀</span><h3>AI 驾驭力</h3><p>沿工具链逐级升级：提示词 → 智能体 → 技能 → 知识库 → 多智能体编排。你的角色从提问者一路演化为 Orchestrator。</p></div><div class="fw"><span class="fw-num">🌉</span><h3>碳硅翻译力</h3><p>人类意图 → AI 指令 + AI 产出 → 人类价值的双向翻译。说得清、接得住，是 AI 时代最稀缺的元技能。</p></div><div class="fw"><span class="fw-num">🧭</span><h3>意义创造力</h3><p>定义「什么值得做」「做到多好算好」「释放的时间用来创造什么」。AI 负责效率，你负责方向。</p></div></div>
+  </div>
+</section>
+
+<section class="dark-section">
+  <div class="container">
+    <div class="sec-head">
+      <span class="sec-label">TOOLCHAIN LADDER</span>
+      <h2 class="sec-title">工具链五层：你的角色由高度决定</h2>
+      <p class="sec-desc">每往上爬一层，你作为人的角色就改变一次。从提问者到 Orchestrator——这不是工具的升级，是你的升级。</p>
+    </div>
+    <div class="ladder"><div class="ladder-row"><span class="l-name">提示词</span><span class="l-role">提问者</span><span class="l-desc">把需求说清楚，AI 单次回答</span></div><div class="ladder-row"><span class="ladder-arrow">→</span><span class="l-name">智能体</span><span class="l-role">管理者</span><span class="l-desc">AI 自主规划并执行多步骤任务</span></div><div class="ladder-row"><span class="ladder-arrow">→</span><span class="l-name">技能</span><span class="l-role">沉淀者</span><span class="l-desc">把成功做法固化为可复用技能</span></div><div class="ladder-row"><span class="ladder-arrow">→</span><span class="l-name">知识库</span><span class="l-role">策展人</span><span class="l-desc">给 AI 动态上下文，越用越懂你</span></div><div class="ladder-row"><span class="ladder-arrow">→</span><span class="l-name">多智能体编排</span><span class="l-role">Orchestrator</span><span class="l-desc">多个 AI 协作，你只做决策</span></div></div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="sec-head">
+      <span class="sec-label">CONTENT MAP</span>
+      <h2 class="sec-title">四大内容模块</h2>
+      <p class="sec-desc">方法、工具、实践、行动——从知道到做到，一站式配齐。</p>
+    </div>
+    <div class="grid"><div class="card"><span class="c-icon">🔬</span><h3>高效工作法</h3><p>8 大知识工作者工作流：深度研究、AI 写作、第二大脑、会议、文档、数据、自动化、Agent。</p><a class="more" href="methods.html">进入 →</a></div><div class="card"><span class="c-icon">🧰</span><h3>AI 工具库</h3><p>9 大类 50+ 工具，国内外双维度、定位优势定价一表尽览，附选型组合。</p><a class="more" href="tools.html">进入 →</a></div><div class="card"><span class="c-icon">🏆</span><h3>最佳实践</h3><p>2026 高 ROI 场景、人机协作回路、真实性铁律、保姆级教程与提示词模板。</p><a class="more" href="practices.html">进入 →</a></div><div class="card"><span class="c-icon">🚀</span><h3>课程与行动</h3><p>1 天觉醒营 → 1 周实战营 → 1 月启航营，30 天路线图，把能力变成收入。</p><a class="more" href="courses.html">进入 →</a></div></div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="cta">
+      <h3>周日 · OPC 一天觉醒营</h3>
+      <p>现场实时上演：从你的基线出发，往上爬一层。带走个人定位卡、一个自闭环回路、30 天路线图。</p>
+      <a class="btn" href="courses.html">查看课程详情</a>
+    </div>
+  </div>
+</section>
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <h4>OPC成长之路 · AI知识工作者学习资源中心</h4>
+        <p style="color:#a8b5ac;font-size:0.85rem;">一个人运行一个硅基团队。<br>碳硅组织研习社旗下 OPC 子品牌「OPC成长之路」的常设学习资源中心。<br>认知到行动的最小闭环。</p>
+      </div>
+      <div>
+        <h4>学习路径</h4>
+        <a href="methods.html">高效工作法</a>
+        <a href="tools.html">AI 工具库</a>
+        <a href="practices.html">最佳实践</a>
+        <a href="courses.html">课程与行动</a>
+      </div>
+      <div>
+        <h4>找到我们</h4>
+        <a href="courses.html">OPC 课程三档</a>
+        <a href="#">公众号「OPC成长之路」</a>
+        <a href="#">星球「OPC超级个体加速器」</a>
+        <a href="#">公众号「进化型组织联盟」</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 碳硅组织研习社 · OPC成长之路</span>
+      <span>本站内容均经多源交叉验证 · 更新日期 2026-08-19</span>
+    </div>
+  </div>
+</footer>
+<script src="js/search.js"></script>
+</body>
+</html>
