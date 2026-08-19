@@ -13,7 +13,7 @@ TAGLINE = "一个人运行一个硅基团队"
 
 NAV = [
     ("index.html",    "首页"),
-    ("playbook.html", "现场跟练"),
+    ("playbook.html", "行动手册"),
     ("methods.html",  "高效工作法"),
     ("tools.html",    "AI工具库"),
     ("practices.html","最佳实践"),
@@ -25,8 +25,8 @@ NAV = [
 # ============================================================
 
 LEVELS = [
-    dict(no="L0", color="#b85a30", name="认知觉醒", desc="为什么 AI 时代人人都是 OPC？三大能力、工具链五层、碳硅共生——建立完整认知地图，找到你的起点。",
-         tags=["概念卡","三大能力","工具链五层","碳硅共生"], link="methods.html", goal="找到你的基线"),
+    dict(no="L0", color="#b85a30", name="认知觉醒", desc="为什么 AI 时代人人都是 OPC？三大能力、工具链五层、碳硅共生——先测评定位基线，再建立完整认知地图。",
+         tags=["先测评","概念卡","三大能力","工具链五层"], link="index.html#assess", goal="先测评，找到基线"),
     dict(no="L1", color="#2563eb", name="方法掌握", desc="八大知识工作者高效工作法：深度研究、AI写作、第二大脑、会议效率、文档处理、数据分析、自动化、Agent构建。",
          tags=["8大工作流","最佳实践","人机分工"], link="methods.html", goal="掌握核心方法"),
     dict(no="L2", color="#00aa55", name="工具驾驭", desc="按场景分类的 AI 工具库：国内外双维度、定位、优势、定价一表尽览，附新人入门/出海/自动化选型组合。",
@@ -376,77 +376,30 @@ def hero_block(eyebrow, h1, sub, btns):
 # PAGES
 # ============================================================
 
-QUIZ = [
-    dict(q="你现在怎么用 AI？",
-         opts=[("偶尔问两句，当高级搜索引擎用", 0), ("让 AI 帮我写文档/做具体任务", 1),
-               ("有自己的提示词模板反复用", 2), ("建了个人知识库喂给 AI", 3),
-               ("多个 AI/Agent 协作跑流程", 4)]),
-    dict(q="你每周重复最多的任务是什么？",
-         opts=[("搜索资料、看文章，没沉淀", 0), ("写文档/报告/周报", 1),
-               ("固定格式的内容生产", 2), ("整理资料/做研究", 3),
-               ("跨系统数据搬运/流程运转", 4)]),
-    dict(q="你的 AI 产出稳定吗？",
-         opts=[("没概念，每次随缘", 0), ("能用，但每次要重新教", 1),
-               ("有模板，输出比较稳定", 2), ("会用我的资料回答，较准", 3),
-               ("有验收标准和回退机制", 4)]),
-    dict(q="你对 AI 的期望是？",
-         opts=[("先搞清楚它到底能干嘛", 0), ("帮我把活干完", 1),
-               ("把重复活自动化", 2), ("成为我的第二大脑", 3),
-               ("替我运营一个硅基团队", 4)]),
-]
+# ============================================================
+# AI驾驭力测评入口（官方测评已由何义情开发: csi-org.com/workshops/ai-assessment）
+# ============================================================
 
-LEVEL_NAMES = ["认知觉醒", "方法掌握", "工具驾驭", "实践深化", "行动变现"]
-LEVEL_HINTS = [
-    "从 L0 开始：先建立认知地图，搞清三大能力与工具链五层。",
-    "从 L1 开始：选与你工作重合度最高的 1-2 条工作法跑通。",
-    "从 L2 开始：按场景配齐工具链，抄「选型组合」作业。",
-    "从 L3 开始：用高 ROI 场景 + 回路方法论，把会用变成用好。",
-    "从 L4 开始：直接进入行动变现，同时用案例反哺认知。",
-]
-LEVEL_LINKS = ["index.html#levels", "methods.html", "tools.html", "practices.html", "courses.html"]
+ASSESS_URL = "https://www.csi-org.com/workshops/ai-assessment"
 
-def quiz_html():
-    qs = ""
-    for i, item in enumerate(QUIZ, 1):
-        opts = ""
-        for label, val in item["opts"]:
-            opts += f'<label class="quiz-opt"><input type="radio" name="q{i}" value="{val}"><span>{label}</span></label>'
-        qs += f'<div class="quiz-q"><h4>{i}. {item["q"]}</h4><div class="quiz-opts">{opts}</div></div>'
-    names_js = json.dumps(LEVEL_NAMES, ensure_ascii=False)
-    hints_js = json.dumps(LEVEL_HINTS, ensure_ascii=False)
-    links_js = json.dumps(LEVEL_LINKS, ensure_ascii=False)
+def assess_html():
     return f"""
-<div class="quiz" id="quiz">
-  <div class="sec-head">
-    <span class="sec-label">SELF-DIAGNOSIS · 60秒</span>
-    <h2 class="sec-title">工具链自测：你现在在哪一层？</h2>
-    <p class="sec-desc">回答 4 个问题，系统基于「工具链五层」模型定位你的基线，并推荐你的下一站——与 OPC 工作坊课前诊断同一套方法论。</p>
+<div class="assess" id="assess">
+  <div class="assess-body">
+    <span class="sec-label">AI MASTERY ASSESSMENT</span>
+    <h2 class="sec-title">先测评，再出发：你的 AI 驾驭力在哪一层？</h2>
+    <p class="sec-desc">进入本站学习前，先完成 AI 驾驭力测评——系统基于你的使用水平定位基线，生成个人诊断与提升路径建议。测评结果将指引你在本站五层学习路径中的起点，并持续跟踪你的爬升。</p>
+    <div class="assess-actions">
+      <a class="btn" href="{ASSESS_URL}" target="_blank" rel="noopener">🚀 开始 AI 驾驭力测评</a>
+      <a class="btn btn-line" href="#levels">或直接浏览学习路径</a>
+    </div>
   </div>
-  {qs}
-  <div class="quiz-actions">
-    <button class="btn" onclick="runQuiz()">🔍 测出我的层级</button>
+  <div class="assess-meta">
+    <div class="stat"><div class="v">5层</div><div class="k">工具链五层模型</div></div>
+    <div class="stat"><div class="v">60s</div><div class="k">测评用时</div></div>
+    <div class="stat"><div class="v">1份</div><div class="k">个人诊断报告</div></div>
   </div>
-  <div id="quiz-result" class="quiz-result"></div>
-</div>
-<script>
-var QUIZ_NAMES = {names_js};
-var QUIZ_HINTS = {hints_js};
-var QUIZ_LINKS = {links_js};
-function runQuiz(){{
-  var qs = document.querySelectorAll('.quiz-q');
-  var scores = [0,0,0,0,0];
-  for (var i = 0; i < qs.length; i++) {{
-    var c = qs[i].querySelector('input:checked');
-    if (!c) {{ alert('请完成第 ' + (i+1) + ' 题'); return; }}
-    scores[parseInt(c.value,10)]++;
-  }}
-  var best = 0;
-  for (var j = 1; j < 5; j++) {{ if (scores[j] > scores[best]) best = j; }}
-  var el = document.getElementById('quiz-result');
-  el.innerHTML = '<div class="qr-box"><div class="qr-lv">L' + best + ' · ' + QUIZ_NAMES[best] + '</div><p>' + QUIZ_HINTS[best] + '</p><a class="btn btn-sm" href="' + QUIZ_LINKS[best] + '">前往我的下一站 →</a></div>';
-  el.scrollIntoView({{behavior:'smooth', block:'center'}});
-}}
-</script>"""
+</div>"""
 
 # ============================================================
 # 现场跟练手册（playbook.html）— 素材全部源自 超级个体赋能营_一天流程_v6.0.md
@@ -464,65 +417,65 @@ PLAYBOOK_CONCEPTS = [
 ]
 
 PLAYBOOK_MODULES = [
-    dict(no="00", time="08:30–09:00", name="到场准备", goal="账号就绪，站点眼熟",
-         steps=["登录 Workbuddy + IMA（+可选 Obsidian），确认可用", "浏览学习站点，眼熟今天的知识卡片", "大屏循环播放 H 博士工作流展示"],
-         prompt="", check="账号全部登录成功", fallback="",
+    dict(no="00", name="准备 · 账号与工具", goal="工具就绪，手册眼熟",
+         steps=["注册登录 Workbuddy + IMA（+可选 Obsidian），确认可用", "浏览本手册与知识卡片，建立全貌", "想清楚今天要解决的一件真实业务"],
+         prompt="", check="账号全部登录可用", fallback="",
          tools="Workbuddy + IMA + Obsidian（三件套）", skills="账号就绪检查（登录态确认清单）",
-         expand="课前3天完成安装 → 现场省20分钟 → 余力先浏览站点各页"),
-    dict(no="①", time="09:00–09:50", name="诊断 · 你的 AI 起点", goal="认领你的墙 + 写下承诺",
-         steps=["看全班数据分布：你不是一个人", "认领四堵墙之一，贴名字到白板", "便利贴写：「今天结束后我最想做到的一件事是___」"],
-         prompt="", check="完成认领 + 承诺便利贴", fallback="",
-         tools="AI能力自测问卷 + 个人诊断报告", skills="基线诊断（四堵墙定位）",
-         expand="四堵墙→下午拆墙策略：习惯墙靠定义任务·翻译墙靠澄清模板·信任墙靠验收标准·整合墙靠回路"),
-    dict(no="②", time="09:50–10:25", name="认知 · 三大能力", goal="三切换 + 工具地图 + 回路",
-         steps=["听三件事：三切换/工具地图/人机协作回路", "每讲完一件，翻站点对应知识卡片", "不用记笔记——站点就是你的笔记本"],
-         prompt="", check="能向邻座讲出回路五节点", fallback="",
-         tools="站点 8 张知识卡片", skills="知识卡片速读（概念→示例→自检）",
+         expand="提前安装 → 节省学习时间 → 余力先浏览站点各页"),
+    dict(no="①", name="诊断 · 你的 AI 起点", goal="定位基线 + 写下承诺",
+         steps=["完成 AI 驾驭力测评，拿到个人诊断报告", "识别你卡在哪堵墙：习惯/翻译/信任/整合", "写下承诺：「本次学习结束，我最想做到的一件事是___」"],
+         prompt="", check="完成测评 + 墙定位 + 承诺", fallback="",
+         tools="AI驾驭力测评（csi-org.com/workshops/ai-assessment）+ 诊断报告", skills="基线诊断（四堵墙定位）",
+         expand="四堵墙→拆墙策略：习惯墙靠定义任务·翻译墙靠澄清模板·信任墙靠验收标准·整合墙靠回路"),
+    dict(no="②", name="认知 · 三大能力", goal="三切换 + 工具地图 + 回路",
+         steps=["掌握三件事：三个关键切换 / AI工具地图 / 人机协作回路", "对照下方知识卡片逐张消化", "把概念映射到自己的业务场景"],
+         prompt="", check="能讲出回路五节点", fallback="",
+         tools="本站 8 张知识卡片", skills="知识卡片速读（概念→示例→自检）",
          expand="三切换→映射你的业务：哪个任务可以开始「定义任务」而不是自己做"),
-    dict(no="③", time="10:40–10:55", name="案例演示 · 看见才相信", goal="看清一条真实回路",
-         steps=["看何义情现场跑一条真实回路（15分钟）", "注意：AI 执行时人在哪个节点停下说「这里不对」", "记住一句话：人给方向、做判断、验收；AI 负责执行"],
+    dict(no="③", name="案例 · 看见才相信", goal="看清一条真实回路",
+         steps=["看一段真实的人机协作回路演示（本站案例/公开演示）", "注意：AI 执行时人在哪个节点停下说「这里不对」", "记住一句话：人给方向、做判断、验收；AI 负责执行"],
          prompt="", check="能指出演示中的判断节点", fallback="",
-         tools="案例演示回放 + 大屏", skills="回路拆解（识别判断节点）",
-         expand="把演示中的判断节点→下午在自己回路里标出来"),
-    dict(no="④", time="10:55–12:00", name="澄清意图 · 从模糊到可执行", goal="需求文档 + 回路草图",
-         steps=["用下面模板和 AI 对话，挖清你的真实意图", "产出：结构化任务需求文档（给谁用/解决什么/交付什么/怎么算成功）", "画 A4 回路草图（输入→AI处理→你判断→AI执行→你验收），卡住处打问号", "邻座互检：对方能否一眼看懂你要做什么"],
+         tools="案例演示回放", skills="回路拆解（识别判断节点）",
+         expand="把演示中的判断节点→在自己的回路里标出来"),
+    dict(no="④", name="澄清意图 · 从模糊到可执行", goal="需求文档 + 回路草图",
+         steps=["用下面模板和 AI 对话，挖清你的真实意图", "产出：结构化任务需求文档（给谁用/解决什么/交付什么/怎么算成功）", "画回路草图（输入→AI处理→你判断→AI执行→你验收），卡住处打问号", "找人互检：对方能否一眼看懂你要做什么"],
          prompt="我有一个模糊的想法：___。请通过提问帮我把它澄清成一份结构化任务需求文档，必须包含：①给谁用 ②解决什么问题 ③最终交付什么 ④怎么算成功。先问我不清楚的地方，再输出文档。",
          check="需求文档四要素齐全 + 回路草图完成", fallback="",
-         tools="Workbuddy 对话 + 需求文档模板", skills="意图澄清技能（四要素：给谁用/解决什么/交付什么/怎么算成功）",
+         tools="AI 对话 + 需求文档模板", skills="意图澄清技能（四要素：给谁用/解决什么/交付什么/怎么算成功）",
          expand="需求文档→沉淀为你的可复用模板库 → 进阶：意图澄清→需求文档自动生成"),
-    dict(no="⑤", time="13:30–14:15", name="人机分工 · 设计碳硅回路", goal="正式回路 + 四条红线",
-         steps=["把草图画实：输入（材料哪来）/AI处理（提取分析生成什么）/你的判断（哪个节点拍板？标准？）/AI执行（什么格式模板）/你验收（怎么算合格）", "标出四条红线：数据/外发/判断/质量", "邻座互检：问「这个判断节点，真的需要你，还是可以交给 AI？」"],
+    dict(no="⑤", name="人机分工 · 设计碳硅回路", goal="正式回路 + 四条红线",
+         steps=["把草图画实：输入（材料哪来）/AI处理（提取分析生成什么）/你的判断（哪个节点拍板？标准？）/AI执行（什么格式模板）/你验收（怎么算合格）", "标出四条红线：数据/外发/判断/质量", "互检：问「这个判断节点，真的需要你，还是可以交给 AI？」"],
          prompt="这是我要构建的人机协作回路，请帮我审查分工是否合理：输入=___，AI处理=___，我的判断=___，AI执行=___，我验收=___。请指出：哪些判断其实可以交给AI？哪些步骤缺少明确验收标准？",
-         check="回路五格填实 + 四红线标注 + 教练🟢标记", fallback="",
-         tools="A3 回路画布 + 四红线贴纸", skills="回路设计技能（五格+红线+验收信号）",
-         expand="回路画实→下午⑥直接可建 → 进阶：判断节点能不能再交给 AI（人只留真判断）"),
-    dict(no="⑥", time="14:15–15:30", name="构建技能 ★核心环节", goal="用自然语言打造专属 AI 能力",
-         steps=["5分钟演示：H博士用自然语言让 Workbuddy 生成竞品分析技能", "基于意图+回路，用下面模板在 Workbuddy 构建你的 skill", "拿真实材料跑一次：跑通=AI 按你设计的逻辑处理、在该停的判断节点停下、输出符合格式", "没跑通→叫教练；15:00 仍失败→用兜底模板替换"],
+         check="回路五格填实 + 四红线标注 + 自检🟢", fallback="",
+         tools="回路画布 + 四红线清单", skills="回路设计技能（五格+红线+验收信号）",
+         expand="回路画实→下一步直接可建 → 进阶：判断节点能不能再交给 AI（人只留真判断）"),
+    dict(no="⑥", name="构建技能 ★核心环节", goal="用自然语言打造专属 AI 能力",
+         steps=["看演示：用自然语言让 AI 生成一个技能（如竞品分析）", "基于意图+回路，用下面模板构建你的 skill", "拿真实材料跑一次：跑通=AI 按你设计的逻辑处理、在该停的判断节点停下、输出符合格式", "没跑通→复盘调整；仍失败→用兜底模板替换"],
          prompt="我需要一个帮我做___的技能。请先追问我几个关键问题（输入材料是什么？输出格式是什么？判断标准是什么？常见错误有哪些？），然后基于我的回答生成一个可调用的 skill。",
-         check="真实材料跑通 + 拍照存档（验收标准：AI 给的结果你能用，或明确知道哪里要改）",
-         fallback="🎯 兜底方案：3 个预置通用技能模板（内容生成类/信息整理类/客户响应类），选最接近的 5 分钟替换——没有人在这一步空手离开。",
+         check="真实材料跑通 + 存档（验收标准：AI 给的结果你能用，或明确知道哪里要改）",
+         fallback="🎯 兜底方案：3 个预置通用技能模板（内容生成类/信息整理类/客户响应类），选最接近的快速替换——不会空手而归。",
          tools="Workbuddy（技能构建）+ 3 预置模板", skills="技能构建器（meta-skill：描述→追问→生成→验收）",
-         expand="课后把常用场景都固化成技能 → 进阶：技能+知识库 → 技能市场/技能交换"),
-    dict(no="⑦", time="15:45–16:15", name="接入知识库 · 让 AI 懂你", goal="技能 + 业务上下文",
-         steps=["在 IMA 创建个人知识库，上传脱敏材料（至少3份跑通，先最小可用）", "在技能里配置知识库接入", "教练检查接入是否生效：技能调用时确实能读到知识库"],
+         expand="把常用场景都固化成技能 → 进阶：技能+知识库 → 技能市场/技能交换"),
+    dict(no="⑦", name="接入知识库 · 让 AI 懂你", goal="技能 + 业务上下文",
+         steps=["在 IMA 创建个人知识库，上传脱敏材料（先最小可用：3份跑通）", "在技能里配置知识库接入", "自检接入是否生效：技能调用时确实能读到知识库"],
          prompt="我上传了以下材料到知识库：___。请基于这些材料，调整我技能的输出风格和判断逻辑，使其符合我的业务背景。",
-         check="技能调用时能读取知识库内容（教练确认）", fallback="",
+         check="技能调用时能读取知识库内容", fallback="",
          tools="IMA（知识库）+ 脱敏材料", skills="知识库接入技能（最小可用3份→检索调优）",
-         expand="课后扩充到 10+ 份 → 进阶：知识库结构化（分类/标签/权限/版本）"),
-    dict(no="⑧", time="16:15–16:50", name="项目原型 · 整合你的系统", goal="技能+知识库=可运行项目",
-         steps=["在 Workbuddy 把技能+知识库整合成项目", "让一个真实业务任务从输入到输出完整跑一次", "保存、确认可调用，截图存档"],
+         expand="扩充到 10+ 份 → 进阶：知识库结构化（分类/标签/权限/版本）"),
+    dict(no="⑧", name="项目原型 · 整合你的系统", goal="技能+知识库=可运行项目",
+         steps=["把技能+知识库整合成项目", "让一个真实业务任务从输入到输出完整跑一次", "保存、确认可调用，截图存档"],
          prompt="", check="项目已保存可调用 + 截图", fallback="",
          tools="Workbuddy（项目整合）", skills="项目组装技能（技能串联+知识库支撑+完整验收）",
          expand="单项目跑通 → 进阶：多项目/多技能编排 → 你的硅基团队雏形"),
-    dict(no="⑨", time="16:50–17:10", name="展示 · 承诺", goal="1.5分钟路演 + 72小时承诺",
-         steps=["每人1.5分钟：你做了什么/给谁用/今天跑通没有", "写 72 小时行动卡：72小时内用今天建的技能处理一件真实工作", "邻座签名做见证人，举卡合影"],
+    dict(no="⑨", name="展示 · 承诺", goal="结构化路演 + 行动承诺",
+         steps=["1.5分钟路演：你做了什么/给谁用/跑通没有", "写 72 小时行动卡：72小时内用今天建的技能处理一件真实工作", "找见证人签名，存档"],
          prompt="", check="行动卡完成 + 见证人签名", fallback="",
          tools="路演卡 + 72小时行动卡", skills="作品路演（1.5分钟结构化表达：做了什么/给谁用/跑通没有）",
-         expand="Day7 复盘诊所 → Day30 最佳作品评选 → 进阶：作品集沉淀为你的案例库"),
-    dict(no="⑩", time="17:10–17:20", name="Check-out · 灵魂三问", goal="回望承诺，锚定意义",
-         steps=["回看早上那张便利贴：你做到了吗？", "灵魂三问：省下来的时间，去做更多同样的事 / 去做以前做不到的事 / 去做一直想做但没时间做的事", "记住：你不再是一个人完成所有任务——你是在设计任务、分配任务、确认任务。你是一家公司。"],
-         prompt="", check="合影 + 填反馈", fallback="",
-         tools="反馈表 + 合影", skills="复盘技能（灵魂三问框架）",
+         expand="定期复盘 → 作品集沉淀为你的案例库"),
+    dict(no="⑩", name="复盘 · 灵魂三问", goal="回望承诺，锚定意义",
+         steps=["回看你的承诺：你做到了吗？", "灵魂三问：省下来的时间，去做更多同样的事 / 去做以前做不到的事 / 去做一直想做但没时间做的事", "记住：你不再是一个人完成所有任务——你是在设计任务、分配任务、确认任务。你是一家公司。"],
+         prompt="", check="完成三问 + 填写复盘", fallback="",
+         tools="复盘框架 + 反馈表", skills="复盘技能（灵魂三问框架）",
          expand="30天路线图（觉醒→固化→组装→放大）→ 进阶：把回路变产品、把能力变收入"),
 ]
 
@@ -544,7 +497,7 @@ def page_playbook():
         prompt = f'<div class="prompt-box"><span class="plabel">📋 提示词模板（复制用）</span>{m["prompt"]}</div>' if m["prompt"] else ""
         fallback = f'<div class="note-box" style="border-left-color:#b85a30;">{m["fallback"]}</div>' if m["fallback"] else ""
         mods += f"""<div class="method" style="border-left-color:var(--l0);" id="mod-{m['no']}">
-  <h3>{m['no']} {m['name']} <span class="tag" style="margin-left:8px;">{m['time']}</span></h3>
+  <h3>{m['no']} {m['name']}</h3>
   <div class="m-tagline">🎯 {m['goal']}</div>
   <div class="m-steps" style="grid-template-columns:1fr;">{"".join(f'<div class="m-step"><span class="n">▸</span>{s}</div>' for s in m["steps"])}</div>
   {prompt}
@@ -561,9 +514,9 @@ def page_playbook():
     for s in PLAYBOOK_SETUP:
         setup += f'<div class="card"><span class="c-icon">{s["icon"]}</span><h3>{s["name"]}</h3><p>{s["desc"]}</p></div>'
 
-    hero = hero_block("现场跟练手册 · 超级个体赋能营 v6.0", "跟着课表走，<br><em>一步都不迷路</em>",
-                      "全天 10 个模块的跟练导航：每步的知识卡片、提示词模板、操作动作、验收标准、兜底方案，全部在这一页。来源：赋能营一天流程 v6.0（何义情 × H博士）。",
-                      [("", "从模块 00 开始", "#mod-00"), ("line", "先看知识卡片", "#concepts")])
+    hero = hero_block("OPC 行动手册", "从知道，到做到：<br><em>十步打造你的 AI 工作系统</em>",
+                      "面向所有 OPC 的行动指南：从准备、诊断、认知，到构建技能、接入知识库、整合项目——每一步都有操作动作、提示词模板、验收标准与拓展路径。跟着走，逐步提升你的 AI 驾驭力。",
+                      [("", "从第 00 步开始", "#mod-00"), ("line", "先看知识卡片", "#concepts")])
 
     body = f"""
 <section id="concepts">
@@ -580,8 +533,8 @@ def page_playbook():
   <div class="container">
     <div class="sec-head">
       <span class="sec-label">MODULE PLAYBOOK</span>
-      <h2 class="sec-title">全天模块跟练</h2>
-      <p class="sec-desc">按课表顺序排列。每步：做什么 → 提示词模板（可直接复制）→ 验收标准 → 兜底方案。</p>
+      <h2 class="sec-title">十步行动路径</h2>
+      <p class="sec-desc">按行动顺序排列。每步：做什么 → 提示词模板（可直接复制）→ 验收标准 → 兜底方案 → 拓展学习。</p>
     </div>
     {mods}
     <div class="note-box">🧭 <b>核心提醒</b>：工具链爬得高不是目的，组装成能跑的自闭环回路才是。跑通的标准：AI 给的结果你能用，或明确知道哪里要改。</div>
@@ -597,7 +550,7 @@ def page_playbook():
     <div class="dark-cards">{setup}</div>
   </div>
 </section>"""
-    return shell("现场跟练", "playbook.html", hero, body)
+    return shell("OPC行动手册", "playbook.html", hero, body)
 
 def page_index():
     levels = ""
@@ -634,13 +587,13 @@ def page_index():
                     ])
 
     hero = hero_block("碳硅组织研习社 · OPC成长之路", "AI 知识工作者<br><em>一站式学习资源中心</em>",
-                      "一个人运行一个硅基团队。从认知觉醒到行动变现，渐进式五层路径，带你完成「认知到行动的最小闭环」。",
-                      [("", "从 L0 开始我的路径", "#levels"), ("line", "浏览工具库", "tools.html")])
+                      "一个人运行一个硅基团队。先测评你的 AI 驾驭力，再从认知觉醒到行动变现——渐进式五层路径，带你完成「认知到行动的最小闭环」。",
+                      [("", "开始 AI 驾驭力测评", ASSESS_URL), ("line", "浏览学习路径", "#levels")])
 
     body = f"""
-<section id="quiz-sec">
+<section id="assess-sec">
   <div class="container">
-    {quiz_html()}
+    {assess_html()}
   </div>
 </section>
 
@@ -691,9 +644,10 @@ def page_index():
 <section>
   <div class="container">
     <div class="cta">
-      <h3>周日 · OPC 一天觉醒营</h3>
-      <p>现场实时上演：从你的基线出发，往上爬一层。带走个人定位卡、一个自闭环回路、30 天路线图。</p>
-      <a class="btn" href="courses.html">查看课程详情</a>
+      <h3>准备好开始了吗？</h3>
+      <p>无论你此刻的 AI 驾驭力在哪一层——先测评定位基线，再沿五层学习路径逐级爬升。每一层都有方法、工具、技能与实践等着你。</p>
+      <a class="btn" href="practices.html">查看最佳实践</a>
+      <a class="btn btn-line" href="courses.html">了解 OPC 课程体系</a>
     </div>
   </div>
 </section>"""

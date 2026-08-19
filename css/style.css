@@ -370,3 +370,25 @@ footer { background:var(--dark); color:#a8b5ac; padding:44px 0 36px; font-size:0
 .qr-box p { flex:1; min-width:220px; font-size:0.9rem; }
 .qr-box .btn { background:var(--green-bright); color:#0d2818; }
 @media (max-width:640px) { .quiz { padding:26px 18px; } }
+
+/* ---------- AI驾驭力测评入口 ---------- */
+.assess {
+  background:linear-gradient(135deg,#0d2818 0%,#1a3a2a 60%,#174a2e 100%);
+  color:#d0d5d2; border-radius:14px; padding:44px 40px;
+  display:flex; gap:36px; align-items:center; flex-wrap:wrap;
+  box-shadow:0 8px 32px rgba(13,40,24,0.18); position:relative; overflow:hidden;
+}
+.assess::after { content:''; position:absolute; top:-60px; right:-60px; width:260px; height:260px; background:radial-gradient(circle, rgba(0,170,85,0.18) 0%, transparent 70%); pointer-events:none; }
+.assess * { position:relative; z-index:1; }
+.assess-body { flex:1; min-width:280px; }
+.assess .sec-label { color:var(--green-bright); }
+.assess h2 { color:#fff; font-size:1.6rem; line-height:1.4; margin-bottom:12px; }
+.assess .sec-desc { color:#a8b5ac; margin-bottom:22px; }
+.assess-actions { display:flex; gap:12px; flex-wrap:wrap; }
+.assess .btn-line { color:#fff; border-color:rgba(255,255,255,0.35); }
+.assess .btn-line:hover { background:rgba(255,255,255,0.08); }
+.assess-meta { display:flex; gap:12px; flex-wrap:wrap; }
+.assess-meta .stat { background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.12); }
+.assess-meta .stat .v { color:var(--green-bright); }
+.assess-meta .stat .k { color:#a8b5ac; }
+@media (max-width:760px) { .assess { padding:32px 24px; } }
